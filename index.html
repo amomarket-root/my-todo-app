@@ -251,23 +251,167 @@
             border-radius: 4px;
         }
 
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .current-date {
+                font-size: 1rem;
+            }
+
+            .form-section {
+                padding: 20px 15px;
+            }
+
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 0;
             }
-            
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .add-btn {
+                width: 100%;
+                padding: 15px;
+                margin-top: 10px;
+            }
+
+            .todos-section {
+                padding: 20px 15px;
+            }
+
+            .todos-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .todos-header > div:first-child {
+                width: 100%;
+            }
+
             .filter-buttons {
-                flex-wrap: wrap;
+                width: 100%;
+                justify-content: space-between;
             }
-            
+
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+
+            .todo-item {
+                padding: 15px;
+                margin-bottom: 10px;
+            }
+
             .todo-content {
-                grid-template-columns: auto 1fr;
+                grid-template-columns: auto 1fr auto;
                 gap: 10px;
+                align-items: flex-start;
             }
-            
+
+            .todo-checkbox {
+                margin-top: 2px;
+            }
+
+            .todo-task {
+                font-size: 15px;
+                line-height: 1.4;
+            }
+
+            .todo-meta {
+                margin-top: 8px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
             .todo-date, .todo-time {
-                display: inline-block;
-                margin-right: 5px;
+                font-size: 11px;
+                padding: 3px 6px;
+                margin-right: 0;
+            }
+
+            .delete-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+                align-self: flex-start;
+                margin-top: 2px;
+            }
+
+            .empty-state {
+                padding: 40px 15px;
+            }
+
+            .empty-state h3 {
+                font-size: 1.3rem;
+            }
+
+            .progress-bar {
+                margin: 15px 0;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .header {
+                padding: 15px 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-section {
+                padding: 15px 10px;
+            }
+
+            .todos-section {
+                padding: 15px 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+            .todo-item {
+                padding: 12px;
+            }
+
+            .todo-task {
+                font-size: 14px;
+            }
+
+            .empty-state {
+                padding: 30px 10px;
+            }
+
+            .empty-state h3 {
+                font-size: 1.2rem;
             }
         }
     </style>

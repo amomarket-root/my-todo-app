@@ -171,70 +171,52 @@
         }
 
         .stats-section {
-            padding: 30px;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            border-bottom: 1px solid #cbd5e0;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 24px;
-            border-radius: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-            border-radius: 20px 20px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
         }
 
         .stat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
         }
 
         .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
         }
 
         .stat-label {
-            color: #64748b;
+            color: #666;
             font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .time-chart {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .chart-title {
@@ -477,19 +459,29 @@
         }
 
         .todo-date {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            color: #1e40af;
+            background: #e3f2fd;
+            color: #1976d2;
         }
 
         .todo-time {
-            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
-            color: #c2410c;
+            background: #fff3e0;
+            color: #f57c00;
         }
 
         .todo-duration {
-            background: linear-gradient(135deg, #e879f9 0%, #d946ef 100%);
-            color: #a21caf;
+            background: #f3e5f5;
+            color: #7b1fa2;
         }
+
+        /* Different colors for minutes in duration */
+        .duration-15 { background: #e8f5e8; color: #2e7d32; }
+        .duration-30 { background: #fff3e0; color: #f57c00; }
+        .duration-45 { background: #fce4ec; color: #c2185b; }
+        .duration-60 { background: #e3f2fd; color: #1976d2; }
+        .duration-90 { background: #f3e5f5; color: #7b1fa2; }
+        .duration-120 { background: #e8eaf6; color: #3f51b5; }
+        .duration-180 { background: #e0f2f1; color: #00695c; }
+        .duration-240 { background: #fff8e1; color: #f57f17; }
 
         .delete-btn {
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
@@ -565,12 +557,12 @@
             }
 
             .stats-section {
-                padding: 20px;
+                padding: 15px;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
+                gap: 15px;
             }
 
             .chart-container {
@@ -704,25 +696,29 @@
                 <div class="stat-card">
                     <div class="stat-value" id="totalTasks">0</div>
                     <div class="stat-label">
-                        <i class="fas fa-list"></i> Total Tasks
+                        <i class="fas fa-list"></i>
+                        Total Tasks
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="completedTasks">0</div>
                     <div class="stat-label">
-                        <i class="fas fa-check-circle"></i> Completed
+                        <i class="fas fa-check-circle"></i>
+                        Completed
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="totalTime">0h</div>
                     <div class="stat-label">
-                        <i class="fas fa-clock"></i> Total Time Planned
+                        <i class="fas fa-clock"></i>
+                        Total Time Planned
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="completedTime">0h</div>
                     <div class="stat-label">
-                        <i class="fas fa-trophy"></i> Time Completed
+                        <i class="fas fa-trophy"></i>
+                        Time Completed
                     </div>
                 </div>
             </div>
@@ -928,6 +924,20 @@
             }
         }
 
+        // Get duration class for different colors
+        function getDurationClass(duration) {
+            const minutes = durationToMinutes(duration);
+            if (minutes === 15) return 'duration-15';
+            if (minutes === 30) return 'duration-30';
+            if (minutes === 45) return 'duration-45';
+            if (minutes === 60) return 'duration-60';
+            if (minutes === 90) return 'duration-90';
+            if (minutes === 120) return 'duration-120';
+            if (minutes === 180) return 'duration-180';
+            if (minutes === 240) return 'duration-240';
+            return 'todo-duration'; // default
+        }
+
         // Update statistics
         function updateStats() {
             const total = todos.length;
@@ -1028,6 +1038,8 @@
 
         // Create HTML for a single todo item
         function createTodoHTML(todo) {
+            const durationClass = getDurationClass(todo.duration);
+            
             return `
                 <div class="todo-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
                     <div class="todo-content">
@@ -1048,7 +1060,7 @@
                                     <i class="fas fa-clock"></i>
                                     ${formatTime(todo.time)}
                                 </span>
-                                <span class="todo-duration">
+                                <span class="${durationClass}">
                                     <i class="fas fa-hourglass-half"></i>
                                     ${todo.duration}
                                 </span>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,585 +12,589 @@
             box-sizing: border-box;
         }
 
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        font-weight: 300;
+    }
+
+    .current-date {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .form-section {
+        padding: 30px;
+        background: #f8f9fa;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e1e5e9;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 15px;
+    }
+
+    .add-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        font-weight: 600;
+    }
+
+    .add-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .todos-section {
+        padding: 30px;
+    }
+
+    .todos-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .todos-count {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .filter-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        border: 2px solid #e1e5e9;
+        background: white;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+
+    .filter-btn.active {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+    }
+
+    /* Stats Section */
+    .stats-section {
+        background: #f8f9fa;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        border: 2px solid #e1e5e9;
+    }
+
+    .stats-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .stats-header h3 {
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .time-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .stat-card {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        border: 2px solid #e1e5e9;
+        transition: transform 0.2s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        border-color: #667eea;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 5px;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    /* Chart Container */
+    .chart-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #e1e5e9;
+        margin-bottom: 15px;
+    }
+
+    .chart-header {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .time-chart {
+        display: flex;
+        align-items: end;
+        justify-content: space-around;
+        height: 100px;
+        margin-bottom: 30px;
+    }
+
+    .time-bar {
+        width: 40px;
+        background: linear-gradient(to top, #667eea, #764ba2);
+        border-radius: 4px 4px 0 0;
+        position: relative;
+        transition: height 0.5s ease;
+        margin: 0 5px;
+        min-height: 5px;
+    }
+
+    .time-bar-label {
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #666;
+        white-space: nowrap;
+    }
+
+    .time-bar-value {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .todo-item {
+        background: white;
+        border: 2px solid #f1f3f4;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .todo-item:hover {
+        border-color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .todo-item.completed {
+        opacity: 0.7;
+        background: #f8f9fa;
+    }
+
+    .todo-content {
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .todo-checkbox {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: #667eea;
+    }
+
+    .todo-details {
+        flex: 1;
+    }
+
+    .todo-task {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .todo-item.completed .todo-task {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .todo-meta {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .todo-date {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 8px;
+    }
+
+    .todo-time {
+        background: #f3e5f5;
+        color: #7b1fa2;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 8px;
+    }
+
+    .todo-duration {
+        background: #e8f5e8;
+        color: #2e7d32;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .delete-btn {
+        background: #ff4757;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background 0.3s ease;
+    }
+
+    .delete-btn:hover {
+        background: #ff3742;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+    }
+
+    .empty-state h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #999;
+    }
+
+    /* Enhanced Progress Bar */
+    .progress-section {
+        margin: 20px 0;
+    }
+
+    .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .progress-title {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .progress-percentage {
+        font-weight: bold;
+        color: #667eea;
+    }
+
+    .progress-bar {
+        background: #e1e5e9;
+        height: 12px;
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-fill {
+        background: linear-gradient(90deg, #ff6b6b 0%, #ffa500 25%, #ffff00 50%, #90ee90 75%, #00ff00 100%);
+        height: 100%;
+        transition: width 2s ease;
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .progress-fill::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+            border-radius: 15px;
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
+            padding: 20px 15px;
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 300;
+            font-size: 2rem;
         }
 
         .current-date {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1rem;
         }
 
         .form-section {
-            padding: 30px;
-            background: #f8f9fa;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: #667eea;
+            padding: 20px 15px;
         }
 
         .form-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
         }
 
         .add-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            font-weight: 600;
-        }
-
-        .add-btn:hover {
-            transform: translateY(-2px);
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
         }
 
         .todos-section {
-            padding: 30px;
+            padding: 20px 15px;
         }
 
         .todos-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
         }
 
-        .todos-count {
-            color: #666;
-            font-size: 14px;
+        .todos-header > div:first-child {
+            width: 100%;
         }
 
         .filter-buttons {
-            display: flex;
-            gap: 10px;
+            width: 100%;
+            justify-content: space-between;
         }
 
         .filter-btn {
-            padding: 8px 16px;
-            border: 2px solid #e1e5e9;
-            background: white;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .filter-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: #f8f9fa;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            border: 2px solid #e1e5e9;
-        }
-
-        .stats-header {
+            flex: 1;
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .stats-header h3 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .time-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #e1e5e9;
-            transition: transform 0.2s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            border-color: #667eea;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Chart Container */
-        .chart-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #e1e5e9;
-            margin-bottom: 15px;
-        }
-
-        .chart-header {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .time-chart {
-            display: flex;
-            align-items: end;
-            justify-content: space-around;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-
-        .time-bar {
-            width: 40px;
-            background: linear-gradient(to top, #667eea, #764ba2);
-            border-radius: 4px 4px 0 0;
-            position: relative;
-            transition: height 0.5s ease;
-            margin: 0 5px;
-        }
-
-        .time-bar-label {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        .time-bar-value {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            color: #333;
-            font-weight: bold;
+            padding: 10px 8px;
+            font-size: 13px;
         }
 
         .todo-item {
-            background: white;
-            border: 2px solid #f1f3f4;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .todo-item:hover {
-            border-color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .todo-item.completed {
-            opacity: 0.7;
-            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
         }
 
         .todo-content {
-            display: grid;
-            grid-template-columns: auto 1fr auto auto;
-            gap: 15px;
-            align-items: center;
+            grid-template-columns: auto 1fr auto;
+            gap: 10px;
+            align-items: flex-start;
         }
 
         .todo-checkbox {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: #667eea;
-        }
-
-        .todo-details {
-            flex: 1;
+            margin-top: 2px;
         }
 
         .todo-task {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .todo-item.completed .todo-task {
-            text-decoration: line-through;
-            color: #999;
+            font-size: 15px;
+            line-height: 1.4;
         }
 
         .todo-meta {
-            font-size: 14px;
-            color: #666;
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .todo-date {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-right: 8px;
-        }
-
-        .todo-time {
-            background: #f3e5f5;
-            color: #7b1fa2;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-right: 8px;
-        }
-
-        .todo-duration {
-            background: #e8f5e8;
-            color: #2e7d32;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
+        .todo-date, .todo-time, .todo-duration {
+            font-size: 11px;
+            padding: 3px 6px;
+            margin-right: 0;
         }
 
         .delete-btn {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: background 0.3s ease;
-        }
-
-        .delete-btn:hover {
-            background: #ff3742;
+            padding: 6px 10px;
+            font-size: 11px;
+            align-self: flex-start;
+            margin-top: 2px;
         }
 
         .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
+            padding: 40px 15px;
         }
 
         .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #999;
-        }
-
-        /* Enhanced Progress Bar */
-        .progress-section {
-            margin: 20px 0;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .progress-title {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .progress-percentage {
-            font-weight: bold;
-            color: #667eea;
+            font-size: 1.3rem;
         }
 
         .progress-bar {
-            background: #e1e5e9;
-            height: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            position: relative;
+            margin: 15px 0;
         }
 
-        .progress-fill {
-            background: linear-gradient(90deg, #ff6b6b 0%, #ffa500 25%, #ffff00 50%, #90ee90 75%, #00ff00 100%);
-            height: 100%;
-            transition: width 2s ease;
-            border-radius: 6px;
-            position: relative;
-            overflow: hidden;
+        .time-stats {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
         }
 
-        .progress-fill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shimmer 2s infinite;
+        .time-chart {
+            height: 80px;
         }
 
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .time-bar {
+            width: 30px;
+        }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 480px) {
+        body {
+            padding: 5px;
         }
 
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                border-radius: 15px;
-            }
-
-            .header {
-                padding: 20px 15px;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .current-date {
-                font-size: 1rem;
-            }
-
-            .form-section {
-                padding: 20px 15px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .form-group {
-                margin-bottom: 15px;
-            }
-
-            .add-btn {
-                width: 100%;
-                padding: 15px;
-                margin-top: 10px;
-            }
-
-            .todos-section {
-                padding: 20px 15px;
-            }
-
-            .todos-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-
-            .todos-header > div:first-child {
-                width: 100%;
-            }
-
-            .filter-buttons {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .filter-btn {
-                flex: 1;
-                text-align: center;
-                padding: 10px 8px;
-                font-size: 13px;
-            }
-
-            .todo-item {
-                padding: 15px;
-                margin-bottom: 10px;
-            }
-
-            .todo-content {
-                grid-template-columns: auto 1fr auto;
-                gap: 10px;
-                align-items: flex-start;
-            }
-
-            .todo-checkbox {
-                margin-top: 2px;
-            }
-
-            .todo-task {
-                font-size: 15px;
-                line-height: 1.4;
-            }
-
-            .todo-meta {
-                margin-top: 8px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-
-            .todo-date, .todo-time, .todo-duration {
-                font-size: 11px;
-                padding: 3px 6px;
-                margin-right: 0;
-            }
-
-            .delete-btn {
-                padding: 6px 10px;
-                font-size: 11px;
-                align-self: flex-start;
-                margin-top: 2px;
-            }
-
-            .empty-state {
-                padding: 40px 15px;
-            }
-
-            .empty-state h3 {
-                font-size: 1.3rem;
-            }
-
-            .progress-bar {
-                margin: 15px 0;
-            }
-
-            .time-stats {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 10px;
-            }
-
-            .time-chart {
-                height: 80px;
-            }
-
-            .time-bar {
-                width: 30px;
-            }
+        .header {
+            padding: 15px 10px;
         }
 
-        /* Extra small screens */
-        @media (max-width: 480px) {
-            body {
-                padding: 5px;
-            }
-
-            .header {
-                padding: 15px 10px;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .form-section {
-                padding: 15px 10px;
-            }
-
-            .todos-section {
-                padding: 15px 10px;
-            }
-
-            .filter-btn {
-                padding: 8px 6px;
-                font-size: 12px;
-            }
-
-            .todo-item {
-                padding: 12px;
-            }
-
-            .todo-task {
-                font-size: 14px;
-            }
-
-            .empty-state {
-                padding: 30px 10px;
-            }
-
-            .empty-state h3 {
-                font-size: 1.2rem;
-            }
-
-            .stats-section {
-                padding: 15px;
-            }
-
-            .time-stats {
-                grid-template-columns: 1fr 1fr;
-            }
+        .header h1 {
+            font-size: 1.8rem;
         }
-    </style>
+
+        .form-section {
+            padding: 15px 10px;
+        }
+
+        .todos-section {
+            padding: 15px 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 6px;
+            font-size: 12px;
+        }
+
+        .todo-item {
+            padding: 12px;
+        }
+
+        .todo-task {
+            font-size: 14px;
+        }
+
+        .empty-state {
+            padding: 30px 10px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.2rem;
+        }
+
+        .stats-section {
+            padding: 15px;
+        }
+
+        .time-stats {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="container">
@@ -598,444 +603,450 @@
             <div class="current-date" id="currentDate"></div>
         </div>
 
-        <div class="form-section">
-            <form id="todoForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="taskInput">Task</label>
-                        <input type="text" id="taskInput" placeholder="Enter your task..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dateInput">Date</label>
-                        <input type="date" id="dateInput" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="timeInput">Time</label>
-                        <input type="time" id="timeInput" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="durationInput">Duration</label>
-                        <select id="durationInput" required>
-                            <option value="15">15 minutes</option>
-                            <option value="30">30 minutes</option>
-                            <option value="45">45 minutes</option>
-                            <option value="60">1 hour</option>
-                            <option value="90">1.5 hours</option>
-                            <option value="120">2 hours</option>
-                            <option value="180">3 hours</option>
-                            <option value="240">4 hours</option>
-                        </select>
-                    </div>
+```
+    <div class="form-section">
+        <form id="todoForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="taskInput">Task</label>
+                    <input type="text" id="taskInput" placeholder="Enter your task..." required>
                 </div>
-                <button type="submit" class="add-btn">Add Task</button>
-            </form>
+                <div class="form-group">
+                    <label for="dateInput">Date</label>
+                    <input type="date" id="dateInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="timeInput">Time</label>
+                    <input type="time" id="timeInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="durationInput">Duration</label>
+                    <select id="durationInput" required>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="90">1.5 hours</option>
+                        <option value="120">2 hours</option>
+                        <option value="180">3 hours</option>
+                        <option value="240">4 hours</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="add-btn">Add Task</button>
+        </form>
+    </div>
+
+    <div class="todos-section">
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-header">
+                <h3>Time Analytics</h3>
+            </div>
+            <div class="time-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalTime">0h</div>
+                    <div class="stat-label">Total Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completedTime">0h</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="pendingTime">0h</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="todayTime">0h</div>
+                    <div class="stat-label">Today's Tasks</div>
+                </div>
+            </div>
+            
+            <!-- Time Chart -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h4>Daily Time Distribution</h4>
+                </div>
+                <div class="time-chart" id="timeChart">
+                    <!-- Chart bars will be generated here -->
+                </div>
+            </div>
         </div>
 
-        <div class="todos-section">
-            <!-- Stats Section -->
-            <div class="stats-section">
-                <div class="stats-header">
-                    <h3>Time Analytics</h3>
-                </div>
-                <div class="time-stats">
-                    <div class="stat-card">
-                        <div class="stat-value" id="totalTime">0h</div>
-                        <div class="stat-label">Total Time</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="completedTime">0h</div>
-                        <div class="stat-label">Completed</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="pendingTime">0h</div>
-                        <div class="stat-label">Pending</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="todayTime">0h</div>
-                        <div class="stat-label">Today's Tasks</div>
-                    </div>
-                </div>
-                
-                <!-- Time Chart -->
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h4>Daily Time Distribution</h4>
-                    </div>
-                    <div class="time-chart" id="timeChart">
-                        <!-- Chart bars will be generated here -->
-                    </div>
-                </div>
+        <div class="todos-header">
+            <div>
+                <h2>Your Tasks</h2>
+                <div class="todos-count" id="todosCount">0 tasks</div>
             </div>
-
-            <div class="todos-header">
-                <div>
-                    <h2>Your Tasks</h2>
-                    <div class="todos-count" id="todosCount">0 tasks</div>
-                </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="pending">Pending</button>
-                    <button class="filter-btn" data-filter="completed">Completed</button>
-                </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
             </div>
+        </div>
 
-            <div class="progress-section">
-                <div class="progress-header">
-                    <span class="progress-title">Completion Progress</span>
-                    <span class="progress-percentage" id="progressPercentage">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-                </div>
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-title">Completion Progress</span>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
             </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
 
-            <div id="todosList">
-                <div class="empty-state">
-                    <h3>No tasks yet</h3>
-                    <p>Add your first task above to get started!</p>
-                </div>
+        <div id="todosList">
+            <div class="empty-state">
+                <h3>No tasks yet</h3>
+                <p>Add your first task above to get started!</p>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        // Global variables
-        let todos = [];
-        let currentFilter = 'all';
+<script>
+    // Global variables
+    let todos = [];
+    let currentFilter = 'all';
 
-        // Initialize the app when page loads
-        function initApp() {
-            updateCurrentDate();
-            setDefaultDateTime();
-            loadTodos();
-            updateDisplay();
-            setupEventListeners();
+    // Initialize the app when page loads
+    function initApp() {
+        updateCurrentDate();
+        setDefaultDateTime();
+        loadTodos();
+        updateDisplay();
+        setupEventListeners();
+    }
+
+    // Update current date display
+    function updateCurrentDate() {
+        const now = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    // Set default date and time
+    function setDefaultDateTime() {
+        const now = new Date();
+        const today = now.toISOString().split('T')[0];
+        const currentTime = now.toTimeString().slice(0, 5);
+        
+        document.getElementById('dateInput').value = today;
+        document.getElementById('timeInput').value = currentTime;
+    }
+
+    // Load todos from memory - using in-memory storage since localStorage is not supported
+    function loadTodos() {
+        // Initialize with empty array - in a real app, this would load from a database
+        if (!window.todosData) {
+            window.todosData = [];
         }
+        todos = window.todosData;
+    }
 
-        // Update current date display
-        function updateCurrentDate() {
-            const now = new Date();
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
-        }
+    // Save todos to memory
+    function saveTodos() {
+        window.todosData = todos;
+        console.log('Saving todos:', todos);
+    }
 
-        // Set default date and time
-        function setDefaultDateTime() {
-            const now = new Date();
-            const today = now.toISOString().split('T')[0];
-            const currentTime = now.toTimeString().slice(0, 5);
-            
-            document.getElementById('dateInput').value = today;
-            document.getElementById('timeInput').value = currentTime;
-        }
+    // Setup all event listeners
+    function setupEventListeners() {
+        // Form submission
+        const todoForm = document.getElementById('todoForm');
+        todoForm.addEventListener('submit', handleFormSubmit);
 
-        // Load todos from in-memory storage
-        function loadTodos() {
-            // In a real app, you might load from localStorage or a database
-            // For now, we'll start with an empty array
-            todos = [];
-        }
+        // Filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', handleFilterClick);
+        });
+    }
 
-        // Save todos (placeholder for persistence)
-        function saveTodos() {
-            // In a real app, you would save to localStorage or send to server
-            console.log('Saving todos:', todos);
-        }
+    // Handle form submission
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const taskInput = document.getElementById('taskInput');
+        const dateInput = document.getElementById('dateInput');
+        const timeInput = document.getElementById('timeInput');
+        const durationInput = document.getElementById('durationInput');
 
-        // Setup all event listeners
-        function setupEventListeners() {
-            // Form submission
-            const todoForm = document.getElementById('todoForm');
-            todoForm.addEventListener('submit', handleFormSubmit);
+        const task = taskInput.value.trim();
+        const date = dateInput.value;
+        const time = timeInput.value;
+        const duration = parseInt(durationInput.value);
 
-            // Filter buttons
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(button => {
-                button.addEventListener('click', handleFilterClick);
-            });
-        }
-
-        // Handle form submission
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            
-            const taskInput = document.getElementById('taskInput');
-            const dateInput = document.getElementById('dateInput');
-            const timeInput = document.getElementById('timeInput');
-            const durationInput = document.getElementById('durationInput');
-
-            const task = taskInput.value.trim();
-            const date = dateInput.value;
-            const time = timeInput.value;
-            const duration = parseInt(durationInput.value);
-
-            // Validate inputs
-            if (!task) {
-                alert('Please enter a task');
-                taskInput.focus();
-                return;
-            }
-
-            if (!date) {
-                alert('Please select a date');
-                dateInput.focus();
-                return;
-            }
-
-            if (!time) {
-                alert('Please select a time');
-                timeInput.focus();
-                return;
-            }
-
-            // Create new todo
-            const newTodo = {
-                id: Date.now() + Math.random(),
-                task: task,
-                date: date,
-                time: time,
-                duration: duration,
-                completed: false,
-                createdAt: new Date().toISOString()
-            };
-
-            // Add to todos array
-            todos.push(newTodo);
-            
-            // Save and update display
-            saveTodos();
-            updateDisplay();
-
-            // Reset form
-            taskInput.value = '';
-            setDefaultDateTime();
-            durationInput.value = '30';
-            
-            // Focus back to task input for quick entry
+        // Validate inputs
+        if (!task) {
+            alert('Please enter a task');
             taskInput.focus();
-
-            console.log('Task added:', newTodo);
+            return;
         }
 
-        // Handle filter button clicks
-        function handleFilterClick(e) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+        if (!date) {
+            alert('Please select a date');
+            dateInput.focus();
+            return;
+        }
 
-            // Add active class to clicked button
-            e.target.classList.add('active');
+        if (!time) {
+            alert('Please select a time');
+            timeInput.focus();
+            return;
+        }
 
-            // Update current filter
-            currentFilter = e.target.dataset.filter;
+        // Create new todo
+        const newTodo = {
+            id: Date.now() + Math.random(),
+            task: task,
+            date: date,
+            time: time,
+            duration: duration,
+            completed: false,
+            createdAt: new Date().toISOString()
+        };
+
+        // Add to todos array
+        todos.push(newTodo);
+        
+        // Save and update display
+        saveTodos();
+        updateDisplay();
+
+        // Reset form
+        taskInput.value = '';
+        setDefaultDateTime();
+        durationInput.value = '30';
+        
+        // Focus back to task input for quick entry
+        taskInput.focus();
+
+        console.log('Task added:', newTodo);
+    }
+
+    // Handle filter button clicks
+    function handleFilterClick(e) {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Add active class to clicked button
+        e.target.classList.add('active');
+
+        // Update current filter
+        currentFilter = e.target.dataset.filter;
+        
+        // Update display
+        updateDisplay();
+    }
+
+    // Update the entire display
+    function updateDisplay() {
+        sortTodos();
+        updateTodosList();
+        updateTodosCount();
+        updateProgress();
+        updateTimeStats();
+        updateTimeChart();
+    }
+
+    // Sort todos by date and time
+    function sortTodos() {
+        todos.sort((a, b) => {
+            // Completed tasks go to bottom
+            if (a.completed && !b.completed) return 1;
+            if (!a.completed && b.completed) return -1;
             
-            // Update display
-            updateDisplay();
-        }
+            // Sort by date and time
+            const dateTimeA = new Date(`${a.date}T${a.time}`);
+            const dateTimeB = new Date(`${b.date}T${b.time}`);
+            return dateTimeA - dateTimeB;
+        });
+    }
 
-        // Update the entire display
-        function updateDisplay() {
-            sortTodos();
-            updateTodosList();
-            updateTodosCount();
-            updateProgress();
-            updateTimeStats();
-            updateTimeChart();
-        }
+    // Update todos list display
+    function updateTodosList() {
+        const todosList = document.getElementById('todosList');
+        const filteredTodos = getFilteredTodos();
 
-        // Sort todos by date and time
-        function sortTodos() {
-            todos.sort((a, b) => {
-                // Completed tasks go to bottom
-                if (a.completed && !b.completed) return 1;
-                if (!a.completed && b.completed) return -1;
-                
-                // Sort by date and time
-                const dateTimeA = new Date(`${a.date}T${a.time}`);
-                const dateTimeB = new Date(`${b.date}T${b.time}`);
-                return dateTimeA - dateTimeB;
-            });
-        }
-
-        // Update todos list display
-        function updateTodosList() {
-            const todosList = document.getElementById('todosList');
-            const filteredTodos = getFilteredTodos();
-
-            if (filteredTodos.length === 0) {
-                todosList.innerHTML = `
-                    <div class="empty-state">
-                        <h3>${currentFilter === 'all' ? 'No tasks yet' : `No ${currentFilter} tasks`}</h3>
-                        <p>${currentFilter === 'all' ? 'Add your first task above to get started!' : `You have no ${currentFilter} tasks.`}</p>
-                    </div>
-                `;
-                return;
-            }
-
-            todosList.innerHTML = filteredTodos.map(todo => createTodoHTML(todo)).join('');
-        }
-
-        // Create HTML for a single todo item
-        function createTodoHTML(todo) {
-            return `
-                <div class="todo-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
-                    <div class="todo-content">
-                        <input 
-                            type="checkbox" 
-                            class="todo-checkbox" 
-                            ${todo.completed ? 'checked' : ''}
-                            onchange="toggleTodo(${todo.id})"
-                        >
-                        <div class="todo-details">
-                            <div class="todo-task">${escapeHtml(todo.task)}</div>
-                            <div class="todo-meta">
-                                <span class="todo-date">${formatDate(todo.date)}</span>
-                                <span class="todo-time">${formatTime(todo.time)}</span>
-                                <span class="todo-duration">${formatDuration(todo.duration)}</span>
-                            </div>
-                        </div>
-                        <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
-                    </div>
+        if (filteredTodos.length === 0) {
+            todosList.innerHTML = `
+                <div class="empty-state">
+                    <h3>${currentFilter === 'all' ? 'No tasks yet' : `No ${currentFilter} tasks`}</h3>
+                    <p>${currentFilter === 'all' ? 'Add your first task above to get started!' : `You have no ${currentFilter} tasks.`}</p>
                 </div>
             `;
+            return;
         }
 
-        // Escape HTML to prevent XSS
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+        todosList.innerHTML = filteredTodos.map(todo => createTodoHTML(todo)).join('');
+    }
+
+    // Create HTML for a single todo item
+    function createTodoHTML(todo) {
+        return `
+            <div class="todo-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
+                <div class="todo-content">
+                    <input 
+                        type="checkbox" 
+                        class="todo-checkbox" 
+                        ${todo.completed ? 'checked' : ''}
+                        onchange="toggleTodo(${todo.id})"
+                    >
+                    <div class="todo-details">
+                        <div class="todo-task">${escapeHtml(todo.task)}</div>
+                        <div class="todo-meta">
+                            <span class="todo-date">${formatDate(todo.date)}</span>
+                            <span class="todo-time">${formatTime(todo.time)}</span>
+                            <span class="todo-duration">${formatDuration(todo.duration)}</span>
+                        </div>
+                    </div>
+                    <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
+                </div>
+            </div>
+        `;
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Get filtered todos based on current filter
+    function getFilteredTodos() {
+        switch (currentFilter) {
+            case 'pending':
+                return todos.filter(todo => !todo.completed);
+            case 'completed':
+                return todos.filter(todo => todo.completed);
+            default:
+                return todos;
         }
+    }
 
-        // Get filtered todos based on current filter
-        function getFilteredTodos() {
-            switch (currentFilter) {
-                case 'pending':
-                    return todos.filter(todo => !todo.completed);
-                case 'completed':
-                    return todos.filter(todo => todo.completed);
-                default:
-                    return todos;
-            }
+    // Format date for display
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        const todayString = today.toISOString().split('T')[0];
+        const tomorrowString = tomorrow.toISOString().split('T')[0];
+
+        if (dateString === todayString) {
+            return 'Today';
+        } else if (dateString === tomorrowString) {
+            return 'Tomorrow';
+        } else {
+            return date.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric',
+                year: date.getFullYear() !== today.getFullYear() ? 'numeric' : undefined
+            });
         }
+    }
 
-        // Format date for display
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
+    // Format time for display
+    function formatTime(timeString) {
+        const [hours, minutes] = timeString.split(':');
+        const hour = parseInt(hours);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const displayHour = hour % 12 || 12;
+        return `${displayHour}:${minutes} ${ampm}`;
+    }
 
-            const todayString = today.toISOString().split('T')[0];
-            const tomorrowString = tomorrow.toISOString().split('T')[0];
-
-            if (dateString === todayString) {
-                return 'Today';
-            } else if (dateString === tomorrowString) {
-                return 'Tomorrow';
+    // Format duration for display
+    function formatDuration(minutes) {
+        if (minutes < 60) {
+            return `${minutes}min`;
+        } else {
+            const hours = Math.floor(minutes / 60);
+            const remainingMinutes = minutes % 60;
+            if (remainingMinutes === 0) {
+                return `${hours}h`;
             } else {
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    day: 'numeric',
-                    year: date.getFullYear() !== today.getFullYear() ? 'numeric' : undefined
-                });
+                return `${hours}h ${remainingMinutes}min`;
             }
         }
+    }
 
-        // Format time for display
-        function formatTime(timeString) {
-            const [hours, minutes] = timeString.split(':');
-            const hour = parseInt(hours);
-            const ampm = hour >= 12 ? 'PM' : 'AM';
-            const displayHour = hour % 12 || 12;
-            return `${displayHour}:${minutes} ${ampm}`;
+    // Toggle todo completion
+    function toggleTodo(id) {
+        const todoIndex = todos.findIndex(todo => todo.id === id);
+        if (todoIndex !== -1) {
+            todos[todoIndex].completed = !todos[todoIndex].completed;
+            saveTodos();
+            updateDisplay();
+        }
+    }
+
+    // Delete todo
+    function deleteTodo(id) {
+        const confirmed = confirm('Are you sure you want to delete this task?');
+        if (confirmed) {
+            todos = todos.filter(todo => todo.id !== id);
+            saveTodos();
+            updateDisplay();
+        }
+    }
+
+    // Update todos count
+    function updateTodosCount() {
+        const total = todos.length;
+        const completed = todos.filter(todo => todo.completed).length;
+        const pending = total - completed;
+
+        let countText = '';
+        switch (currentFilter) {
+            case 'pending':
+                countText = `${pending} pending task${pending !== 1 ? 's' : ''}`;
+                break;
+            case 'completed':
+                countText = `${completed} completed task${completed !== 1 ? 's' : ''}`;
+                break;
+            default:
+                countText = `${total} total task${total !== 1 ? 's' : ''} (${completed} completed)`;
         }
 
-        // Format duration for display
-        function formatDuration(minutes) {
-            if (minutes < 60) {
-                return `${minutes}min`;
-            } else {
-                const hours = Math.floor(minutes / 60);
-                const remainingMinutes = minutes % 60;
-                if (remainingMinutes === 0) {
-                    return `${hours}h`;
-                } else {
-                    return `${hours}h ${remainingMinutes}min`;
-                }
-            }
-        }
+        document.getElementById('todosCount').textContent = countText;
+    }
 
-        // Toggle todo completion
-        function toggleTodo(id) {
-            const todoIndex = todos.findIndex(todo => todo.id === id);
-            if (todoIndex !== -1) {
-                todos[todoIndex].completed = !todos[todoIndex].completed;
-                saveTodos();
-                updateDisplay();
-            }
-        }
+    // Update progress bar with beautiful animation
+    function updateProgress() {
+        const total = todos.length;
+        const completed = todos.filter(todo => todo.completed).length;
+        const percentage = total === 0 ? 0 : (completed / total) * 100;
 
-        // Delete todo
-        function deleteTodo(id) {
-            const confirmed = confirm('Are you sure you want to delete this task?');
-            if (confirmed) {
-                todos = todos.filter(todo => todo.id !== id);
-                saveTodos();
-                updateDisplay();
-            }
-        }
+        const progressFill = document.getElementById('progressFill');
+        const progressPercentage = document.getElementById('progressPercentage');
 
-        // Update todos count
-        function updateTodosCount() {
-            const total = todos.length;
-            const completed = todos.filter(todo => todo.completed).length;
-            const pending = total - completed;
+        // Animate the progress bar
+        setTimeout(() => {
+            progressFill.style.width = `${percentage}%`;
+            progressPercentage.textContent = `${Math.round(percentage)}%`;
+        }, 100);
+    }
 
-            let countText = '';
-            switch (currentFilter) {
-                case 'pending':
-                    countText = `${pending} pending task${pending !== 1 ? 's' : ''}`;
-                    break;
-                case 'completed':
-                    countText = `${completed} completed task${completed !== 1 ? 's' : ''}`;
-                    break;
-                default:
-                    countText = `${total} total task${total !== 1 ? 's' : ''} (${completed} completed)`;
-            }
+    // Update time statistics
+    function updateTimeStats() {
+        const totalMinutes = todos.reduce((sum, todo) => sum + todo.duration, 0);
+        const completedMinutes = todos.filter(todo => todo.completed)
+            .reduce((sum, todo) => sum + todo.duration, 0);
+        const pendingMinutes = totalMinutes - completedMinutes;
+        
+        const today = new Date().toISOString().split('T')[0];
+        const todayMinutes = todos.filter(todo => todo.date === today)
+            .reduce((sum, todo) => sum + todo.duration, 0);
 
-            document.getElementById('todosCount').textContent = countText;
-        }
-
-        // Update progress bar with beautiful animation
-        function updateProgress() {
-            const total = todos.length;
-            const completed = todos.filter(todo => todo.completed).length;
-            const percentage = total === 0 ? 0 : (completed / total) * 100;
-
-            const progressFill = document.getElementById('progressFill');
-            const progressPercentage = document.getElementById('progressPercentage');
-
-            // Animate the progress bar
-            setTimeout(() => {
-                progressFill.style.width = `${percentage}%`;
-                progressPercentage.textContent = `${Math.round(percentage)}%`;
-            }, 100);
-        }
-
-        // Update time statistics
-        function updateTimeStats() {
-            const totalMinutes = todos.reduce((sum, todo) => sum + todo.duration, 0);
-            const completedMinutes = todos.filter(todo => todo.completed)
-                .reduce((sum, todo) => sum + todo.duration, 0);
-            const pendingMinutes = totalMinutes - completedMinutes;
-            
-            const today = new Date().toISOString().split('T')[0];
-            const todayMinutes = todos.filter(todo => todo.date === today)
-                .reduce
+        //
+```

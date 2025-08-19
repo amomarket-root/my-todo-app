@@ -91,6 +91,8 @@
             cursor: pointer;
             transition: transform 0.2s ease;
             font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
         }
 
         .add-btn:hover {
@@ -295,9 +297,9 @@
 
         .todo-content {
             display: grid;
-            grid-template-columns: auto 1fr auto auto;
+            grid-template-columns: auto 1fr auto;
             gap: 15px;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .todo-checkbox {
@@ -305,17 +307,21 @@
             height: 20px;
             cursor: pointer;
             accent-color: #667eea;
+            margin-top: 2px;
         }
 
         .todo-details {
             flex: 1;
+            min-width: 0;
         }
 
         .todo-task {
             font-size: 16px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            word-wrap: break-word;
+            line-height: 1.4;
         }
 
         .todo-item.completed .todo-task {
@@ -329,6 +335,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            align-items: center;
         }
 
         .todo-date {
@@ -338,6 +345,7 @@
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .todo-time {
@@ -347,6 +355,7 @@
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .todo-duration {
@@ -356,6 +365,7 @@
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .delete-btn {
@@ -367,6 +377,7 @@
             cursor: pointer;
             font-size: 12px;
             transition: background 0.3s ease;
+            white-space: nowrap;
         }
 
         .delete-btn:hover {
@@ -403,13 +414,26 @@
                 font-size: 2rem;
             }
 
+            .current-date {
+                font-size: 1rem;
+            }
+
             .form-section {
                 padding: 20px 15px;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
-                gap: 0;
+                gap: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .add-btn {
+                margin-top: 5px;
+                padding: 12px 24px;
             }
 
             .stats-section {
@@ -421,8 +445,26 @@
                 gap: 15px;
             }
 
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .time-chart {
+                margin-top: 15px;
+                padding: 15px;
+            }
+
             .chart-container {
                 height: 150px;
+                gap: 5px;
+            }
+
+            .chart-title {
+                font-size: 16px;
             }
 
             .todos-section {
@@ -443,16 +485,162 @@
             .filter-btn {
                 flex: 1;
                 text-align: center;
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+
+            .todo-item {
+                padding: 15px;
+                margin-bottom: 12px;
             }
 
             .todo-content {
-                grid-template-columns: auto 1fr auto;
-                gap: 10px;
+                grid-template-columns: auto 1fr;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .todo-task {
+                font-size: 15px;
+                margin-bottom: 10px;
             }
 
             .todo-meta {
-                margin-top: 8px;
                 gap: 6px;
+                margin-bottom: 12px;
+            }
+
+            .todo-date, .todo-time, .todo-duration {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+
+            .delete-btn {
+                grid-column: 1 / -1;
+                justify-self: end;
+                margin-top: 8px;
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+        }
+
+        /* Extra small screens (iPhone SE, small phones) */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .header {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-section {
+                padding: 15px;
+            }
+
+            .stats-section {
+                padding: 12px;
+            }
+
+            .stats-grid {
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 12px;
+            }
+
+            .stat-value {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .time-chart {
+                padding: 12px;
+                margin-top: 12px;
+            }
+
+            .todos-section {
+                padding: 15px;
+            }
+
+            .todo-item {
+                padding: 12px;
+            }
+
+            .todo-content {
+                gap: 10px;
+            }
+
+            .todo-task {
+                font-size: 14px;
+                line-height: 1.3;
+            }
+
+            .todo-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .todo-date, .todo-time, .todo-duration {
+                display: inline-block;
+                margin-right: 6px;
+                margin-bottom: 2px;
+            }
+
+            .delete-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+                margin-top: 6px;
+            }
+
+            .filter-btn {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+            .progress-text {
+                font-size: 12px;
+            }
+        }
+
+        /* Very small screens adjustments */
+        @media (max-width: 360px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .current-date {
+                font-size: 0.9rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .todo-meta {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .chart-container {
+                gap: 3px;
+            }
+
+            .bar-label {
+                font-size: 10px;
+            }
+
+            .bar-value {
+                font-size: 9px;
             }
         }
     </style>

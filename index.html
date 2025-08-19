@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -77,7 +77,7 @@
 
         .form-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 15px;
         }
 
@@ -132,6 +132,110 @@
             background: #667eea;
             color: white;
             border-color: #667eea;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 2px solid #e1e5e9;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stats-header h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .time-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e1e5e9;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: #667eea;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e1e5e9;
+            margin-bottom: 15px;
+        }
+
+        .chart-header {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .time-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .time-bar {
+            width: 40px;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 0.5s ease;
+            margin: 0 5px;
+        }
+
+        .time-bar-label {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .time-bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: bold;
         }
 
         .todo-item {
@@ -207,6 +311,16 @@
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .todo-duration {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .delete-btn {
@@ -236,19 +350,59 @@
             color: #999;
         }
 
+        /* Enhanced Progress Bar */
+        .progress-section {
+            margin: 20px 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-percentage {
+            font-weight: bold;
+            color: #667eea;
+        }
+
         .progress-bar {
             background: #e1e5e9;
-            height: 8px;
-            border-radius: 4px;
-            margin: 20px 0;
+            height: 12px;
+            border-radius: 6px;
             overflow: hidden;
+            position: relative;
         }
 
         .progress-fill {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #ff6b6b 0%, #ffa500 25%, #ffff00 50%, #90ee90 75%, #00ff00 100%);
             height: 100%;
-            transition: width 0.3s ease;
-            border-radius: 4px;
+            transition: width 2s ease;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         /* Mobile Responsive Styles */
@@ -345,7 +499,7 @@
                 gap: 6px;
             }
 
-            .todo-date, .todo-time {
+            .todo-date, .todo-time, .todo-duration {
                 font-size: 11px;
                 padding: 3px 6px;
                 margin-right: 0;
@@ -368,6 +522,19 @@
 
             .progress-bar {
                 margin: 15px 0;
+            }
+
+            .time-stats {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .time-chart {
+                height: 80px;
+            }
+
+            .time-bar {
+                width: 30px;
             }
         }
 
@@ -413,6 +580,14 @@
             .empty-state h3 {
                 font-size: 1.2rem;
             }
+
+            .stats-section {
+                padding: 15px;
+            }
+
+            .time-stats {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
@@ -435,11 +610,20 @@
                         <input type="date" id="dateInput" required>
                     </div>
                     <div class="form-group">
-                        <label for="timeInput">Duration</label>
-                        <select id="timeInput" required>
-                            <option value="30 minutes">30 minutes</option>
-                            <option value="1 hour">1 hour</option>
-                            <option value="2 hours">2 hours</option>
+                        <label for="timeInput">Time</label>
+                        <input type="time" id="timeInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="durationInput">Duration</label>
+                        <select id="durationInput" required>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="90">1.5 hours</option>
+                            <option value="120">2 hours</option>
+                            <option value="180">3 hours</option>
+                            <option value="240">4 hours</option>
                         </select>
                     </div>
                 </div>
@@ -448,6 +632,41 @@
         </div>
 
         <div class="todos-section">
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stats-header">
+                    <h3>Time Analytics</h3>
+                </div>
+                <div class="time-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalTime">0h</div>
+                        <div class="stat-label">Total Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="completedTime">0h</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="pendingTime">0h</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="todayTime">0h</div>
+                        <div class="stat-label">Today's Tasks</div>
+                    </div>
+                </div>
+                
+                <!-- Time Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h4>Daily Time Distribution</h4>
+                    </div>
+                    <div class="time-chart" id="timeChart">
+                        <!-- Chart bars will be generated here -->
+                    </div>
+                </div>
+            </div>
+
             <div class="todos-header">
                 <div>
                     <h2>Your Tasks</h2>
@@ -460,8 +679,14 @@
                 </div>
             </div>
 
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-title">Completion Progress</span>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
             </div>
 
             <div id="todosList">
@@ -481,7 +706,7 @@
         // Initialize the app when page loads
         function initApp() {
             updateCurrentDate();
-            setDefaultDate();
+            setDefaultDateTime();
             loadTodos();
             updateDisplay();
             setupEventListeners();
@@ -499,32 +724,27 @@
             document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
         }
 
-        // Set default date to today
-        function setDefaultDate() {
-            const today = new Date().toISOString().split('T')[0];
+        // Set default date and time
+        function setDefaultDateTime() {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            const currentTime = now.toTimeString().slice(0, 5);
+            
             document.getElementById('dateInput').value = today;
+            document.getElementById('timeInput').value = currentTime;
         }
 
-        // Load todos from memory/localStorage
+        // Load todos from in-memory storage
         function loadTodos() {
-            try {
-                const savedTodos = localStorage.getItem('todos');
-                if (savedTodos) {
-                    todos = JSON.parse(savedTodos);
-                }
-            } catch (error) {
-                console.log('No saved todos found, starting fresh');
-                todos = [];
-            }
+            // In a real app, you might load from localStorage or a database
+            // For now, we'll start with an empty array
+            todos = [];
         }
 
-        // Save todos to localStorage
+        // Save todos (placeholder for persistence)
         function saveTodos() {
-            try {
-                localStorage.setItem('todos', JSON.stringify(todos));
-            } catch (error) {
-                console.log('Could not save todos');
-            }
+            // In a real app, you would save to localStorage or send to server
+            console.log('Saving todos:', todos);
         }
 
         // Setup all event listeners
@@ -547,10 +767,12 @@
             const taskInput = document.getElementById('taskInput');
             const dateInput = document.getElementById('dateInput');
             const timeInput = document.getElementById('timeInput');
+            const durationInput = document.getElementById('durationInput');
 
             const task = taskInput.value.trim();
             const date = dateInput.value;
             const time = timeInput.value;
+            const duration = parseInt(durationInput.value);
 
             // Validate inputs
             if (!task) {
@@ -566,17 +788,18 @@
             }
 
             if (!time) {
-                alert('Please select a duration');
+                alert('Please select a time');
                 timeInput.focus();
                 return;
             }
 
             // Create new todo
             const newTodo = {
-                id: Date.now() + Math.random(), // Ensure unique ID
+                id: Date.now() + Math.random(),
                 task: task,
                 date: date,
                 time: time,
+                duration: duration,
                 completed: false,
                 createdAt: new Date().toISOString()
             };
@@ -590,14 +813,13 @@
 
             // Reset form
             taskInput.value = '';
-            setDefaultDate();
-            timeInput.value = '30 minutes';
+            setDefaultDateTime();
+            durationInput.value = '30';
             
             // Focus back to task input for quick entry
             taskInput.focus();
 
             console.log('Task added:', newTodo);
-            console.log('Total todos:', todos.length);
         }
 
         // Handle filter button clicks
@@ -623,17 +845,21 @@
             updateTodosList();
             updateTodosCount();
             updateProgress();
+            updateTimeStats();
+            updateTimeChart();
         }
 
-        // Sort todos by date and completion status
+        // Sort todos by date and time
         function sortTodos() {
             todos.sort((a, b) => {
                 // Completed tasks go to bottom
                 if (a.completed && !b.completed) return 1;
                 if (!a.completed && b.completed) return -1;
                 
-                // Sort by date (earliest first)
-                return new Date(a.date) - new Date(b.date);
+                // Sort by date and time
+                const dateTimeA = new Date(`${a.date}T${a.time}`);
+                const dateTimeB = new Date(`${b.date}T${b.time}`);
+                return dateTimeA - dateTimeB;
             });
         }
 
@@ -670,7 +896,8 @@
                             <div class="todo-task">${escapeHtml(todo.task)}</div>
                             <div class="todo-meta">
                                 <span class="todo-date">${formatDate(todo.date)}</span>
-                                <span class="todo-time">${todo.time}</span>
+                                <span class="todo-time">${formatTime(todo.time)}</span>
+                                <span class="todo-duration">${formatDuration(todo.duration)}</span>
                             </div>
                         </div>
                         <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
@@ -721,6 +948,30 @@
             }
         }
 
+        // Format time for display
+        function formatTime(timeString) {
+            const [hours, minutes] = timeString.split(':');
+            const hour = parseInt(hours);
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const displayHour = hour % 12 || 12;
+            return `${displayHour}:${minutes} ${ampm}`;
+        }
+
+        // Format duration for display
+        function formatDuration(minutes) {
+            if (minutes < 60) {
+                return `${minutes}min`;
+            } else {
+                const hours = Math.floor(minutes / 60);
+                const remainingMinutes = minutes % 60;
+                if (remainingMinutes === 0) {
+                    return `${hours}h`;
+                } else {
+                    return `${hours}h ${remainingMinutes}min`;
+                }
+            }
+        }
+
         // Toggle todo completion
         function toggleTodo(id) {
             const todoIndex = todos.findIndex(todo => todo.id === id);
@@ -762,27 +1013,29 @@
             document.getElementById('todosCount').textContent = countText;
         }
 
-        // Update progress bar
+        // Update progress bar with beautiful animation
         function updateProgress() {
             const total = todos.length;
             const completed = todos.filter(todo => todo.completed).length;
             const percentage = total === 0 ? 0 : (completed / total) * 100;
 
-            document.getElementById('progressFill').style.width = `${percentage}%`;
+            const progressFill = document.getElementById('progressFill');
+            const progressPercentage = document.getElementById('progressPercentage');
+
+            // Animate the progress bar
+            setTimeout(() => {
+                progressFill.style.width = `${percentage}%`;
+                progressPercentage.textContent = `${Math.round(percentage)}%`;
+            }, 100);
         }
 
-        // Initialize app when DOM is loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
-        }
-
-        // Debug function to check todos
-        function debugTodos() {
-            console.log('Current todos:', todos);
-            console.log('Total count:', todos.length);
-        }
-    </script>
-</body>
-</html>
+        // Update time statistics
+        function updateTimeStats() {
+            const totalMinutes = todos.reduce((sum, todo) => sum + todo.duration, 0);
+            const completedMinutes = todos.filter(todo => todo.completed)
+                .reduce((sum, todo) => sum + todo.duration, 0);
+            const pendingMinutes = totalMinutes - completedMinutes;
+            
+            const today = new Date().toISOString().split('T')[0];
+            const todayMinutes = todos.filter(todo => todo.date === today)
+                .reduce
